@@ -9,13 +9,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfig {
 
+    private final CorsProperties corsProperties;
+    public CorsConfig(CorsProperties corsProperties){
+        this.corsProperties=corsProperties;
+    }
+
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**") // Saare endpoints par permission de do
-                        .allowedOrigins("http://localhost:3000") // Flutter Web ka URL aur Port
+                registry.addMapping("/**")
+                        .allowedOrigins(corsProperties.getAllowedOrigins().toArray(String[]::new))
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
