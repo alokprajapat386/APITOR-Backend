@@ -36,6 +36,7 @@ public class MetricsAggregatorService {
         metric.setStatusCode(metricsInfo.statusCode());
         metric.setLatency(metricsInfo.latency());
         metric.setPayloadSize(metricsInfo.payloadSize());
+        metric.setIpAddress(metricsInfo.ipAddress());
         try {
             metric.setCreatedAt(Instant.parse(metricsInfo.createdAt()));
         }catch(DateTimeParseException ex){
