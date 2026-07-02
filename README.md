@@ -3,7 +3,7 @@
 The core processing engine of **APITOR**—a high-performance, robust backend designed to act as an analytical layer for APIs. Instead of just dumping raw log files, APITOR intercept requests, tracks critical performance metrics in real-time, and aggregates data to help developers isolate infrastructure bottlenecks instantly.
 
 * **Frontend Dashboard Repository:** [🔗 Click here to view the Frontend Repository](https://github.com/alokprajapat386/APITOR-Frontend)
-* 
+  
 ## 🚀 Key Analytical Metrics Tracked
 
 The engine intercepts, extracts, and aggregates data across the following dimensions:
@@ -29,7 +29,7 @@ The backend logic is structured into a clean, secure pipeline to manage configur
 ## 🛠️ Tech Stack
 
 * **Language/Framework:** Java / Spring Boot 
-* **Database:** PostgreSQL / MySQL (Optimized for time-series aggregation query patterns)
+* **Database:** PostgreSQL (Optimized for time-series aggregation query patterns)
 * **Security:** Spring Security & JWT Architecture
 * **Communication Protocols:** RESTful APIs with strict CORS filters for seamless frontend handshake
 
