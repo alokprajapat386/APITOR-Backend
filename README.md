@@ -5,7 +5,7 @@ The core processing engine of **APITOR**—a high-performance, robust backend de
 * **Frontend Dashboard Repository:** [🔗 Click here to view the Frontend Repository](https://github.com/alokprajapat386/APITOR-Frontend)
 
 Want to intgrate your project key and start tracking your API, then follow this
-* **Connector Repository: ** [🔗 Click here to view the APITOR Connectors Templates](https://github.com/alokprajapat386/APITOR-Connector-Templates)
+* **Connector Repository:** [🔗 Click here to view the APITOR Connectors Templates](https://github.com/alokprajapat386/APITOR-Connector-Templates)
   
 ## 🚀 Key Analytical Metrics Tracked
 
