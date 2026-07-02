@@ -3,6 +3,9 @@
 The core processing engine of **APITOR**—a high-performance, robust backend designed to act as an analytical layer for APIs. Instead of just dumping raw log files, APITOR intercept requests, tracks critical performance metrics in real-time, and aggregates data to help developers isolate infrastructure bottlenecks instantly.
 
 * **Frontend Dashboard Repository:** [🔗 Click here to view the Frontend Repository](https://github.com/alokprajapat386/APITOR-Frontend)
+
+Want to intgrate your project key and start tracking your API, then follow this
+* **Connector Repository: ** [🔗 Click here to view the APITOR Connectors Templates](https://github.com/alokprajapat386/APITOR-Connector-Templates)
   
 ## 🚀 Key Analytical Metrics Tracked
 
