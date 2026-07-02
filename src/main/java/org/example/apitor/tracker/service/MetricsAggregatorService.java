@@ -17,11 +17,11 @@ import java.util.UUID;
 public class MetricsAggregatorService {
     private final MetricRepository metricRepository;
     private final ProjectRepository projectRepository;
-    private final LocationService locationService;
-    MetricsAggregatorService(MetricRepository metricRepository, ProjectRepository projectRepository, LocationService locationService ){
+//    private final LocationService locationService;
+    MetricsAggregatorService(MetricRepository metricRepository, ProjectRepository projectRepository ){
         this.metricRepository=metricRepository;
         this.projectRepository=projectRepository;
-        this.locationService=locationService;
+//        this.locationService=locationService;
     }
 
     public void addMetric(MetricsInfoDTO metricsInfo,
@@ -42,11 +42,11 @@ public class MetricsAggregatorService {
             metric.setCreatedAt(Instant.now());
         }
 
-        Map<String, String> location= locationService.resolveLocationFromIp(metricsInfo.ipAddress());
-        metric.setCountry(location.get("country"));
-        metric.setCity(location.get("city"));
-        metric.setLatitude(metricsInfo.latitude()==null?Double.parseDouble(location.get("latitude")): metricsInfo.latitude());
-        metric.setLongitude(metricsInfo.longitude()==null?Double.parseDouble(location.get("longitude")): metricsInfo.longitude());
+//        Map<String, String> location= locationService.resolveLocationFromIp(metricsInfo.ipAddress());
+//        metric.setCountry(location.get("country"));
+//        metric.setCity(location.get("city"));
+//        metric.setLatitude(metricsInfo.latitude()==null?Double.parseDouble(location.get("latitude")): metricsInfo.latitude());
+//        metric.setLongitude(metricsInfo.longitude()==null?Double.parseDouble(location.get("longitude")): metricsInfo.longitude());
 
         metricRepository.save(metric);
 
