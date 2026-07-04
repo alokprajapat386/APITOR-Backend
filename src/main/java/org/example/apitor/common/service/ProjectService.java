@@ -1,5 +1,6 @@
 package org.example.apitor.common.service;
 
+import jakarta.transaction.Transactional;
 import org.example.apitor.common.dto.ProjectCreateRequestDTO;
 import org.example.apitor.common.dto.ProjectDetailsDTO;
 import org.example.apitor.common.entity.User;
@@ -49,6 +50,34 @@ public class ProjectService {
             throw new ResourceNotFoundException("Project with id: " + id + " not found");
         }
         return new ProjectDetailsDTO(project,projectTokenUtil);
+    }
+
+    public ProjectDetailsDTO updateProject(Long id,ProjectCreateRequestDTO request, String username){
+        Project project = projectRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Project with id: " + id + " not found"));
+        if(!project.getOwner().getUsername().equals(username)){
+            throw new ResourceNotFoundException("Project with id: " + id + " not found");
+        }
+        if(request.projectName()!=null){
+            project.setProjectName(request.projectName());
+        }
+        if(request.targetURL()!=null){
+            project.setTargetURL(request.targetURL());
+        }
+        projectRepository.save(project);
+        return new ProjectDetailsDTO(project, projectTokenUtil);
+    }
+    @Transactional
+    public void deleteProject(Long id, String username){
+        Project project = projectRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Project with id: " + id + " not found"));
+        if(!project.getOwner().getUsername().equals(username)){
+            throw new ResourceNotFoundException("Project with id: " + id + " not found");
+        }
+
+
+
+        projectRepository.delete(project);
     }
 
 

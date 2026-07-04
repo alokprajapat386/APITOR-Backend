@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/project")
 public class ProjectController {
@@ -36,6 +38,22 @@ public class ProjectController {
         
         return ResponseEntity.ok(
             projectService.getAllProjects(auth.getName())
+        );
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateProject(@PathVariable Long id, @RequestBody ProjectCreateRequestDTO request,Authentication auth){
+
+        return ResponseEntity.ok(
+            projectService.updateProject(id, request, auth.getName())
+        );
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteProject(@PathVariable Long id, Authentication auth){
+        projectService.deleteProject(id, auth.getName());
+        return ResponseEntity.ok(
+            Map.of("message", "Project deleted successfully")
         );
     }
 

@@ -29,8 +29,9 @@ import java.util.Collections;
 @Service
 public class AuthService {
 
-    @Value("google.client.id")
+    @Value("${google.client.id}")
     private String googleClientId;
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -105,15 +106,14 @@ public class AuthService {
 
     public LoginResponseDTO handleOAuthGoogleLogin(GoogleOAuthRequestDTO googleLoginRequest)  {
         try{
+
             NetHttpTransport transport = new NetHttpTransport();
             GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
-
             GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
                     .setAudience(Collections.singletonList(googleClientId))
                     .build();
 
             GoogleIdToken idToken = verifier.verify(googleLoginRequest.tokenId());
-
             if(idToken!=null){
                 GoogleIdToken.Payload payload = idToken.getPayload();
 

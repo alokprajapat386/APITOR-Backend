@@ -3,6 +3,8 @@ package org.example.apitor.common.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.Instant;
 
@@ -22,6 +24,7 @@ public class Metric {
 
     @ManyToOne
     @JoinColumn(name = "project_id", nullable = false)
+    @OnDelete(action =  OnDeleteAction.CASCADE)
     private Project project;
 
 
