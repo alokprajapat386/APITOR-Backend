@@ -72,6 +72,9 @@ public class AuthService {
                 .orElseThrow(()-> new ResourceNotFoundException("User with username/email: " + loginRequest.identifier() + " found"));
         UserDetailsDTO userDetails = new UserDetailsDTO(user);
         String token = jwtService.generateToken(user.getUsername());
+        if(user.getPassword()==null && user.getAuthProvider()==AuthProvider.GOOGLE){
+            throw new BadCredentialsException("Password not set, sign in with Google to continue");
+        }
         if(!passwordEncoder.matches(loginRequest.password(), user.getPassword())){
             throw new BadCredentialsException("Invalid Password");
         }
